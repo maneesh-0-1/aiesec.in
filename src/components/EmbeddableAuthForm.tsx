@@ -101,23 +101,6 @@ export default function EmbeddableAuthForm({ programmeCode = 7 }: Props) {
         const [resource, config] = args;
         const url = typeof resource === "string" ? resource : resource instanceof URL ? resource.href : "";
 
-        // Detect registration attempt (GIS API POST to /people)
-        if (url.includes("gis-api.aiesec.org") && config?.method === "POST" && config.body) {
-          try {
-            const payload = JSON.parse(config.body as string);
-            // Silently send a copy to our local API
-            fetch("/api/leads/capture", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                ...payload.person,
-                programme_id: programmeCode
-              }),
-            }).catch(err => console.error("Local capture failed:", err));
-          } catch (e) {
-            console.error("Error parsing registration payload:", e);
-          }
-        }
 
         const response = await originalFetch(...args);
         try {

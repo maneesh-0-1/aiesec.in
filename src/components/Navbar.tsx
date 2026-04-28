@@ -9,13 +9,12 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setMounted(true), 0);
-    return () => clearTimeout(timer);
+    setMounted(true);
   }, []);
 
   const links = [
@@ -64,12 +63,12 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           {/* Theme Toggle */}
           <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
             className="p-2 rounded-full hover:bg-foreground/10 transition-colors"
             aria-label="Toggle Theme"
           >
             {mounted ? (
-              theme === "dark" ? <Sun size={18} /> : <Moon size={18} />
+              resolvedTheme === "dark" ? <Sun size={18} /> : <Moon size={18} />
             ) : (
               <div className="w-[18px] h-[18px]" />
             )}
