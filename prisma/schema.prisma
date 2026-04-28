@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Lead {
+  id            String   @id @default(cuid())
+  firstName     String
+  lastName      String
+  email         String
+  phone         String
+  lcId          Int
+  lcName        String
+  programmeId   Int
+  programmeName String
+  status        String   @default("NEW")
+  notes         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([lcId])
+  @@index([email])
+}
+
+model User {
+  id        String   @id // Clerk ID
+  email     String   @unique
+  name      String?
+  role      String   @default("LC_USER") // ADMIN, LC_USER
+  lcId      Int?     // Specific LC access
+  lcName    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

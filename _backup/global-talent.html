@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Talent - Accelerate Your Career | AIESEC</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            --teal: #0CB9C1;
+            --teal-glow: rgba(12, 185, 193, 0.15);
+            --blue: #037Ef3;
+            --dark: #0a0a0a;
+            --glass-bg: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(255, 255, 255, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Aura Background */
+        .aura-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: var(--dark);
+        }
+
+        .aura-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.5;
+            animation: float 20s infinite alternate ease-in-out;
+            will-change: transform;
+        }
+
+        .orb-1 {
+            width: 70vw;
+            height: 70vw;
+            background: radial-gradient(circle, rgba(12, 185, 193, 0.35) 0%, rgba(12, 185, 193, 0) 60%);
+            top: -20%;
+            left: -10%;
+        }
+
+        .orb-2 {
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(3, 126, 243, 0.25) 0%, rgba(3, 126, 243, 0) 60%);
+            bottom: -20%;
+            right: -10%;
+            animation-delay: -5s;
+            animation-duration: 22s;
+        }
+
+        .orb-3 {
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(12, 185, 193, 0.2) 0%, rgba(12, 185, 193, 0) 60%);
+            top: 40%;
+            left: 30%;
+            animation-duration: 25s;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(3%, 5%) scale(1.05); }
+            100% { transform: translate(-3%, -2%) scale(0.95); }
+        }
+
+        /* Glassmorphism Utility */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid var(--glass-border);
+            border-left: 1px solid var(--glass-border);
+            border-right: 1px solid rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            box-shadow: 0 8px 32px var(--teal-glow);
+            border-radius: 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 32px;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 100px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-links a.active {
+            color: #fff;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--teal);
+            box-shadow: 0 0 8px var(--teal);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 120px 24px 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            max-width: 900px;
+            letter-spacing: -1px;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 0%, var(--teal) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(12, 185, 193, 0.3);
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 700px;
+            margin-bottom: 48px;
+            font-weight: 300;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: var(--teal);
+            color: #000;
+            padding: 16px 36px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(12, 185, 193, 0.4);
+            border: 1px solid transparent;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 30px rgba(12, 185, 193, 0.6);
+            transform: translateY(-2px);
+            background: #0ed2db;
+        }
+
+        .floating-pill {
+            position: absolute;
+            padding: 12px 24px;
+            border-radius: 100px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: float-pill 6s infinite alternate ease-in-out;
+            cursor: default;
+        }
+
+        .pill-1 {
+            top: 25%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .pill-2 {
+            bottom: 25%;
+            right: 20%;
+            animation-delay: -2s;
+        }
+
+        .pill-3 {
+            top: 40%;
+            right: 12%;
+            animation-delay: -4s;
+        }
+
+        .pill-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--teal);
+            box-shadow: 0 0 8px var(--teal);
+        }
+
+        @keyframes float-pill {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-15px) rotate(2deg); }
+        }
+
+        /* Marquee Section */
+        .marquee-section {
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: rgba(0,0,0,0.2);
+        }
+
+        .marquee-container {
+            display: flex;
+            width: max-content;
+            animation: marquee 30s linear infinite;
+        }
+
+        .marquee-content {
+            display: flex;
+            gap: 80px;
+            padding: 0 40px;
+        }
+
+        .partner-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .partner-logo:hover {
+            color: #fff;
+            text-shadow: 0 0 15px var(--teal);
+            transform: scale(1.05);
+        }
+
+        .marquee-section::before,
+        .marquee-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 15vw;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .marquee-section::before {
+            left: 0;
+            background: linear-gradient(to right, var(--dark), transparent);
+        }
+
+        .marquee-section::after {
+            right: 0;
+            background: linear-gradient(to left, var(--dark), transparent);
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Bento Grid */
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header p {
+            color: rgba(255,255,255,0.7);
+            font-weight: 300;
+            font-size: 1.1rem;
+        }
+
+        .bento-section {
+            padding: 120px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            auto-rows: 320px;
+        }
+
+        .bento-card {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border-radius: 32px;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(12, 185, 193, 0.2);
+        }
+        
+        .bento-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .bento-card:hover::after {
+            opacity: 1;
+        }
+
+        .bento-large {
+            grid-column: span 2;
+            grid-row: span 2;
+            height: 100%;
+        }
+
+        .bento-medium {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+
+        .bento-wide {
+            grid-column: span 4;
+            grid-row: span 1;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .bento-wide .bento-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 40px;
+        }
+        
+        .bento-wide .bento-text {
+            flex: 1;
+        }
+
+        .bento-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 20px;
+            background: rgba(12, 185, 193, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(12, 185, 193, 0.3);
+            margin-bottom: 32px;
+            box-shadow: inset 0 0 20px rgba(12, 185, 193, 0.1);
+        }
+
+        .bento-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .bento-content p {
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Abstract 3D Graph Icon CSS */
+        .icon-graph {
+            display: flex;
+            align-items: flex-end;
+            gap: 6px;
+            height: 28px;
+        }
+        .icon-graph div {
+            width: 8px;
+            background: var(--teal);
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(12,185,193,0.5);
+            animation: grow 2s ease-out infinite alternate;
+        }
+        .icon-graph div:nth-child(1) { height: 40%; animation-delay: 0s; }
+        .icon-graph div:nth-child(2) { height: 70%; animation-delay: 0.4s; }
+        .icon-graph div:nth-child(3) { height: 100%; animation-delay: 0.8s; }
+
+        @keyframes grow {
+            0% { transform: scaleY(0.8); }
+            100% { transform: scaleY(1.1); }
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 80px 24px 160px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline-container {
+            position: relative;
+            margin-top: 64px;
+            padding-left: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 23px; /* visual aesthetic alignment */
+            top: 20px;
+            bottom: 20px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--teal) 0%, rgba(12,185,193,0.3) 80%, transparent 100%);
+            box-shadow: 0 0 15px var(--teal);
+        }
+
+        .timeline-step {
+            position: relative;
+            padding: 40px;
+            border-radius: 32px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-step:hover {
+            transform: translateX(10px);
+        }
+
+        .timeline-dot-wrapper {
+            position: absolute;
+            left: -49px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--dark);
+            border: 2px solid var(--teal);
+            z-index: 2;
+            box-shadow: 0 0 0 6px var(--dark);
+        }
+
+        .timeline-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--teal);
+            box-shadow: 0 0 12px var(--teal);
+        }
+
+        .timeline-content {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        
+        .step-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: rgba(255,255,255,0.03);
+            -webkit-text-stroke: 1px rgba(255,255,255,0.15);
+            line-height: 1;
+            transition: all 0.4s ease;
+        }
+
+        .timeline-step:hover .step-number {
+            color: rgba(12, 185, 193, 0.1);
+            -webkit-text-stroke: 1px rgba(12, 185, 193, 0.5);
+            transform: scale(1.1);
+        }
+
+        .timeline-step h3 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .timeline-step p {
+            color: rgba(255,255,255,0.7);
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+                auto-rows: auto;
+            }
+            .bento-large { grid-column: span 2; grid-row: auto; }
+            .bento-medium { grid-column: span 2; grid-row: auto; }
+            .bento-wide { grid-column: span 2; grid-row: auto; }
+            
+            .floating-pill { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            .bento-large, .bento-medium, .bento-wide {
+                grid-column: span 1;
+            }
+            .bento-wide .bento-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            .timeline-container {
+                padding-left: 40px;
+            }
+            .timeline-line {
+                left: 13px;
+            }
+            .timeline-dot-wrapper {
+                left: -39px;
+            }
+            .timeline-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+            .nav-links {
+                display: none; /* simple mobile hide for minimal scope */
+            }
+            nav {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animated Mesh Gradient Aura -->
+    <div class="aura-container">
+        <div class="aura-orb orb-1"></div>
+        <div class="aura-orb orb-2"></div>
+        <div class="aura-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="glass">
+        <a href="#" class="nav-logo">AIESEC</a>
+        <div class="nav-links">
+            <a href="#" class="active">Programs</a>
+            <a href="#">Partners</a>
+            <a href="#">About</a>
+            <a href="#">Apply</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="glass floating-pill pill-1">
+                <div class="pill-dot"></div>
+                1000+ Corporate Partners
+            </div>
+            <div class="glass floating-pill pill-2">
+                <div class="pill-dot"></div>
+                50+ Countries
+            </div>
+            <div class="glass floating-pill pill-3">
+                <div class="pill-dot"></div>
+                Fast-Track Growth
+            </div>
+
+            <h1>Accelerate Your Career <span class="text-gradient">Globally.</span></h1>
+            <p>Step into the corporate world with international internships designed to challenge and elevate your professional trajectory.</p>
+            <div class="cta-group">
+                <a href="#bento" class="btn-primary">Explore Opportunities</a>
+            </div>
+        </section>
+
+        <!-- Marquee Section -->
+        <section class="marquee-section">
+            <div class="marquee-container">
+                <div class="marquee-content">
+                    <span class="partner-logo">TATA CONSULTANCY</span>
+                    <span class="partner-logo">MICROSOFT</span>
+                    <span class="partner-logo">PWC</span>
+                    <span class="partner-logo">DHL</span>
+                    <span class="partner-logo">ELECTROLUX</span>
+                    <span class="partner-logo">HUSQVARNA</span>
+                </div>
+                <!-- Duplicate for seamless looping -->
+                <div class="marquee-content">
+                    <span class="partner-logo">TATA CONSULTANCY</span>
+                    <span class="partner-logo">MICROSOFT</span>
+                    <span class="partner-logo">PWC</span>
+                    <span class="partner-logo">DHL</span>
+                    <span class="partner-logo">ELECTROLUX</span>
+                    <span class="partner-logo">HUSQVARNA</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bento Grid Section -->
+        <section id="bento" class="bento-section">
+            <div class="section-header">
+                <h2>Why Global Talent?</h2>
+                <p>Unlock an intense period of professional and personal development.</p>
+            </div>
+            
+            <div class="bento-grid">
+                <!-- Large Tile -->
+                <div class="glass bento-card bento-large">
+                    <div>
+                        <div class="bento-icon">
+                            <div class="icon-graph">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-content">
+                        <h3>Professional Growth</h3>
+                        <p>Dive deep into real-world corporate environments. Gain invaluable hands-on experience, tackle complex challenges, and emerge as a seasoned global professional ready to lead.</p>
+                    </div>
+                </div>
+
+                <!-- Medium Tile 1 -->
+                <div class="glass bento-card bento-medium">
+                    <div class="bento-content">
+                        <h3>Global Network</h3>
+                        <p>Build an expansive international contact list. Connect with mentors, leaders, and peers across borders to open doors you never knew existed.</p>
+                    </div>
+                </div>
+
+                <!-- Medium Tile 2 -->
+                <div class="glass bento-card bento-medium">
+                    <div class="bento-content">
+                        <h3>Skill Development</h3>
+                        <p>Focus on acquiring highly relevant, practical industry skills. Adapt to new workplace cultures and methodologies that put you ahead of the curve.</p>
+                    </div>
+                </div>
+
+                <!-- Wide Bottom Tile -->
+                <div class="glass bento-card bento-wide">
+                    <div class="bento-content">
+                        <div class="bento-text">
+                            <h3>Diverse Industries</h3>
+                            <p>Whether it's IT, Marketing, Business Administration, or Engineering—find roles tailored to your exact career ambitions across top-tier sectors globally.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Timeline Section -->
+        <section class="timeline-section">
+            <div class="section-header">
+                <h2>Your Journey Starts Here</h2>
+                <p>A streamlined process to get you overseas and working.</p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <!-- Step 1 -->
+                <div class="glass timeline-step">
+                    <div class="timeline-dot-wrapper"><div class="timeline-dot"></div></div>
+                    <div class="timeline-content">
+                        <span class="step-number">01</span>
+                        <div>
+                            <h3>Sign Up</h3>
+                            <p>Create your profile on the AIESEC portal and upload your updated CV highlighting your skills and experiences.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="glass timeline-step">
+                    <div class="timeline-dot-wrapper"><div class="timeline-dot"></div></div>
+                    <div class="timeline-content">
+                        <span class="step-number">02</span>
+                        <div>
+                            <h3>Interview & Selection</h3>
+                            <p>Connect with our corporate partners through tailored interviews designed to find the perfect mutual fit.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="glass timeline-step">
+                    <div class="timeline-dot-wrapper"><div class="timeline-dot"></div></div>
+                    <div class="timeline-content">
+                        <span class="step-number">03</span>
+                        <div>
+                            <h3>Match & Preparation</h3>
+                            <p>Once accepted, we help you prepare for your visa, logistics, and cross-cultural corporate integration.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="glass timeline-step">
+                    <div class="timeline-dot-wrapper"><div class="timeline-dot"></div></div>
+                    <div class="timeline-content">
+                        <span class="step-number">04</span>
+                        <div>
+                            <h3>Travel & Excel</h3>
+                            <p>Fly out to your host country, begin your internship, and start accelerating your global career trajectory.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Subtle interaction for the aura mesh gradient background based on mouse movement
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            const orb1 = document.querySelector('.orb-1');
+            const orb2 = document.querySelector('.orb-2');
+            
+            if(window.innerWidth > 768) {
+                requestAnimationFrame(() => {
+                    orb1.style.transform = `translate(${x * -30}px, ${y * -30}px)`;
+                    orb2.style.transform = `translate(${x * 30}px, ${y * 30}px)`;
+                });
+            }
+        });
+    </script>
+</body>
+</html>

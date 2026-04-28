@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-teal: #0CB9C1;
+  --color-blue: #037Ef3;
+  --color-volunteer: #F85A40;
+  --color-talent: #0CB9C1;
+  --color-teacher: #F48924;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #020617;
+  
+  --teal: #0CB9C1;
+  --blue: #037Ef3;
+  
+  --volunteer: #F85A40;
+  --talent: #0CB9C1;
+  --teacher: #F48924;
+  
+  --volunteer-glow: rgba(248, 90, 64, 0.4);
+  --talent-glow: rgba(12, 185, 193, 0.4);
+  --teacher-glow: rgba(244, 137, 36, 0.4);
+  --teal-glow: rgba(12, 185, 193, 0.4);
+  --blue-glow: rgba(3, 126, 243, 0.4);
+  
+  --aura-1: rgba(3, 126, 243, 0.15);
+  --aura-2: rgba(3, 126, 243, 0.1);
+  --aura-3: rgba(3, 126, 243, 0.15);
+  
+  /* Light Mode Fluid Colors */
+  --fluid-bg: #ffffff;
+  --fluid-orb: radial-gradient(circle, rgba(3, 126, 243, 0.6), rgba(3, 126, 243, 0.15), transparent);
+
+  /* Light Mode Glass Utility */
+  --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4));
+  --glass-border: rgba(255, 255, 255, 1);
+  --glass-border-b: rgba(255, 255, 255, 0.3);
+
+  /* Premium Glassmorphism Design Tokens - Light Mode */
+  --font-main: 'Bricolage Grotesque', sans-serif;
+  --glass-panel-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
+  --glass-panel-hover: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.5));
+  --glass-panel-border-top: rgba(255, 255, 255, 0.8);
+  --glass-panel-border-left: rgba(255, 255, 255, 0.8);
+  --glass-panel-border-right: rgba(255, 255, 255, 0.3);
+  --glass-panel-border-bottom: rgba(255, 255, 255, 0.3);
+  --glass-panel-highlight: rgba(255, 255, 255, 0.8);
+  --glass-panel-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  --glass-panel-inset: inset 0 2px 8px rgba(255, 255, 255, 0.6);
+  
+  --brand-active: #037Ef3;
+  --glass-btn-text: #020617;
+  
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 32px;
+  --radius-pill: 100px;
+}
+
+.dark {
+  --background: #02080a;
+  --foreground: #ffffff;
+  
+  --volunteer-glow: rgba(248, 90, 64, 0.4);
+  --talent-glow: rgba(12, 185, 193, 0.4);
+  --teacher-glow: rgba(244, 137, 36, 0.4);
+  --teal-glow: rgba(12, 185, 193, 0.4);
+  --blue-glow: rgba(3, 126, 243, 0.4);
+  
+  --aura-1: rgba(3, 126, 243, 0.25);
+  --aura-2: rgba(3, 126, 243, 0.15);
+  --aura-3: rgba(3, 126, 243, 0.2);
+  
+  /* Dark Mode Fluid Colors */
+  --fluid-bg: #02080a;
+  --fluid-orb: radial-gradient(circle, rgba(3, 126, 243, 0.6), rgba(3, 126, 243, 0.15), transparent);
+
+  /* Dark Mode Glass Utility */
+  --glass-bg: linear-gradient(135deg, rgba(20, 35, 60, 0.6), rgba(10, 20, 40, 0.8));
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-border-b: rgba(255, 255, 255, 0.05);
+
+  /* Premium Glassmorphism Design Tokens - Dark Mode */
+  --glass-panel-bg: linear-gradient(135deg, rgba(20, 35, 60, 0.55), rgba(10, 20, 40, 0.75));
+  --glass-panel-hover: linear-gradient(135deg, rgba(30, 45, 75, 0.65), rgba(15, 25, 50, 0.85));
+  --glass-panel-border-top: rgba(255, 255, 255, 0.15);
+  --glass-panel-border-left: rgba(255, 255, 255, 0.15);
+  --glass-panel-border-right: rgba(255, 255, 255, 0.05);
+  --glass-panel-border-bottom: rgba(255, 255, 255, 0.05);
+  --glass-panel-highlight: rgba(255, 255, 255, 0.2);
+  --glass-panel-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  --glass-panel-inset: inset 0 2px 8px rgba(255, 255, 255, 0.2);
+  
+  --glass-btn-text: #ffffff;
+}
+
+body {
+  background-color: transparent;
+  color: var(--foreground);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: var(--font-main, var(--font-inter));
+}
+
+/* Glassmorphism Utility */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border-top: 2px solid var(--glass-border);
+  border-left: 2px solid var(--glass-border);
+  border-right: 1px solid var(--glass-border-b);
+  border-bottom: 1px solid var(--glass-border-b);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    inset 0 2px 20px rgba(255, 255, 255, 0.8),
+    0 8px 32px var(--blue-glow);
+  border-radius: 24px;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--foreground) 0%, var(--blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 40px var(--blue-glow);
+}
+
+/* Premium Glassmorphism Panel */
+.glass-panel {
+  background: var(--glass-panel-bg);
+  backdrop-filter: blur(60px);
+  -webkit-backdrop-filter: blur(60px);
+  border-top: 1px solid var(--glass-panel-border-top);
+  border-left: 1px solid var(--glass-panel-border-left);
+  border-right: 1px solid var(--glass-panel-border-right);
+  border-bottom: 1px solid var(--glass-panel-border-bottom);
+  box-shadow: var(--glass-panel-shadow), var(--glass-panel-inset);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s ease;
+}
+
+.glass-panel > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Glass Buttons & Active Items */
+.glass-btn {
+  background: var(--glass-panel-bg);
+  border: 1px solid var(--brand-active);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  color: var(--glass-btn-text);
+}
+
+.glass-btn:hover, .glass-item-active {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(3, 126, 243, 0.4);
+  background: var(--glass-panel-hover);
+}
+
+.glass-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: skewX(-25deg);
+  transition: 0.5s;
+  z-index: 1;
+}
+
+.glass-btn:hover::after {
+  animation: shine 1.5s infinite;
+}
+
+@keyframes shine {
+  100% {
+    left: 200%;
+  }
+}
